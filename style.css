@@ -1,0 +1,53 @@
+
+#current-image-container{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-flow: column wrap;
+    padding: 20px;
+}
+h1{
+    font-size: 35px;
+}  
+#image{
+    width: 99%;
+    height: 600px;
+}  
+#img-title{
+    margin-top: 20px;
+    font-size: 30px;
+}
+#para{
+    font-size: 20px;
+    line-height: 30px;
+    word-spacing: 5px;
+}
+h2{
+    font-size: 30px;
+}
+#search-div{
+    font-size: 25px;
+}
+#search-btn{
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    font-size: large;
+    border: none;
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+}
+input{
+    font-size: large;
+    cursor: pointer;
+}
+li{
+    margin: 5px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    list-style:none;
+}
+a{
+    text-decoration: none;
+}
