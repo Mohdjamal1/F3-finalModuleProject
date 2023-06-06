@@ -10,7 +10,11 @@ function getCurrentImageOfTheDay(){
     const url = `https://api.nasa.gov/planetary/apod?date=${date}&api_key=${api_key}`;
 
     fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+        if(!response.ok)
+        throw new Error(`Something went wrong status ${response.status}`);
+        return response.json();
+    })
     .then(data=>{
         // console.log(data.url);
         let image = document.getElementById('image');
@@ -29,7 +33,11 @@ function getCurrentImageOfTheDay(){
 function getImageOfTheDay(selectedDate) {
     const url = `https://api.nasa.gov/planetary/apod?date=${selectedDate}&api_key=${api_key}`;
     fetch(url)
-        .then(response => response.json())
+        .then(response => {
+            if(!response.ok)
+            throw new Error(`Something went wrong status ${response.status}`);
+            response.json();
+        })
         .then(data => {
             // Display data in the UI
             let h1 = document.querySelector('h1');
@@ -41,8 +49,7 @@ function getImageOfTheDay(selectedDate) {
             title.innerText = data.title;
             para.innerText = data.explanation;
         // Save the date to local storage and add it to the search history
-            saveSearch(selectedDate);
-            addSearchHistory(selectedDate);
+           
         })
         .catch((error) => console.log(error));
 }
@@ -50,7 +57,11 @@ function getImageOfTheDay(selectedDate) {
 function getPreviousImage(selectedDate) {
     const url = `https://api.nasa.gov/planetary/apod?date=${selectedDate}&api_key=${api_key}`;
     fetch(url)
-        .then(response => response.json())
+        .then(response =>{
+            if(!response.ok)
+            throw new Error(`Something went wrong status${response.status}`);
+             response.json();
+        })
         .then(data => {
             // Display data in the UI
             let h1 = document.querySelector('h1');
@@ -93,7 +104,6 @@ document.getElementById("search-btn").addEventListener("click", function nextSea
     const currentDate = new Date().toISOString().split("T")[0];
     const limitDate = '1995-06-20';
     
-
     if (selectedDate > currentDate || selectedDate < limitDate) {
         // Display an error message or take appropriate action
         alert(`Invalid date selection. Please choose a date between (1995-06-20 to the ${currentDate}).`);
@@ -101,6 +111,8 @@ document.getElementById("search-btn").addEventListener("click", function nextSea
     }
 
     getImageOfTheDay(selectedDate);
+    saveSearch(selectedDate);
+    addSearchHistory(selectedDate);
 });
 //Display the image of the current date when the page loads
 getCurrentImageOfTheDay();
