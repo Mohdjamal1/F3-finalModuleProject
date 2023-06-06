@@ -1,4 +1,4 @@
-const api_key = '5CyLIhfnFgWiwTQPIg6rM1BUDmoor1117BG5bbFMs';
+const api_key = '5CyLIhfnFgWiwTQPIg6rM1BUDmoor1117BG5bbFM';
 const date = new Date().toISOString().slice(0, 10);
 //for maximum date limit
 document.getElementById('search-input').max = new Date().toISOString().split("T")[0];
