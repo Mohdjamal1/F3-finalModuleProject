@@ -1,4 +1,4 @@
-const api_key = 'uRoKdgrUhHGXf9pm3ybvs4LU7xu8Co9VTypveIvh';
+const api_key = '5CyLIhfnFgWiwTQPIg6rM1BUDmoor1117BG5bbFMs';
 const date = new Date().toISOString().slice(0, 10);
 //for maximum date limit
 document.getElementById('search-input').max = new Date().toISOString().split("T")[0];
@@ -22,7 +22,7 @@ function getCurrentImageOfTheDay(){
         saveSearch(date);
         addSearchHistory(date);
     })
-    .catch(error => console.log(error));
+    .catch((error) => console.log(error));
 }
 
 // Function to fetch and display the image for the selected date
@@ -44,7 +44,7 @@ function getImageOfTheDay(selectedDate) {
             saveSearch(selectedDate);
             addSearchHistory(selectedDate);
         })
-        .catch(error => console.log(error));
+        .catch((error) => console.log(error));
 }
 
 function getPreviousImage(selectedDate) {
@@ -62,7 +62,7 @@ function getPreviousImage(selectedDate) {
             title.innerText = data.title;
             para.innerText = data.explanation;
         })
-        .catch(error => console.log(error));
+        .catch((error) => console.log(error));
 }
 
 //Function add Search History into Dom.
@@ -103,4 +103,4 @@ document.getElementById("search-btn").addEventListener("click", function nextSea
     getImageOfTheDay(selectedDate);
 });
 //Display the image of the current date when the page loads
-document.onload(getCurrentImageOfTheDay());
+getCurrentImageOfTheDay();
